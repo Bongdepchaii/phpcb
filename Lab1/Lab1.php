@@ -3,7 +3,7 @@
     $so_thuc = 10.5;
     $chuoi = "Good morning";
     $mang = array(1, 2, 3, 4, 5);
-    class Nguoi{
+    class Woman{
         public $ten;
         public $tuoi;
         public function __construct($ten, $tuoi){
@@ -11,7 +11,7 @@
             $this->tuoi = $tuoi;
         }
     }
-    $nguoi = new Nguoi("Thanh Bui", 25);
+    $nguoi = new Woman("Thanh Bui", 19);
     $gia_tri_null = null;
     $gia_tri_boolean = true;
     function ham(){
