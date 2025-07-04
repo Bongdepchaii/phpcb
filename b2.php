@@ -1,16 +1,16 @@
 <?php
-// define("PI", 3.14);
-// echo PI."\n";
+define("PI", 3.14);
+echo PI."\n";
 
-// const NAME = 'THANHBUI';
-// echo(NAME."\n");
+const NAME = 'THANHBUI';
+echo(NAME."\n");
 
-// $a = 10;
-// if ($a > 5){
-//     echo "a is greater than 5\n";
-// } else {
-//     echo "a is not greater than 5\n";
-// }
+$a = 10;
+if ($a > 5){
+    echo "a is greater than 5\n";
+} else {
+    echo "a is not greater than 5\n";
+}
 
 $tuoi = 18;
 if($tuoi < 18 ){
