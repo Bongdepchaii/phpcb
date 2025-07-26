@@ -1,7 +1,5 @@
 <?php
-
 $xinchao = "Xin chao";
-
 function User($ten = "Thanh"){
     $chaomung = "chao mung";
 

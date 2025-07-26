@@ -1,8 +1,14 @@
 <?php
 session_start();
 
-
+if(!isset($_GET['id'])){
+  echo "khong thay sp";
+  exit;
+}
+$masp = $_GET['id'];
+$productlist = $_SESSION['product'];
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +21,7 @@ session_start();
   <style>
     body { background: #f8f9fa; font-family: 'Roboto', Arial, sans-serif; }
     .menu { background: #fff; padding: 1.2rem 1rem; border-radius: 1rem; margin-bottom: 2rem; }
-    .menu a { font-family: 'Playfair Display', serif; margin-right: 1.5rem; font-weight: 500; color: #0d6efd; text-decoration: none; }
+    .menu a { font-family: 'Playfair Display',serif; margin-right: 1.5rem; font-weight: 500; color: #0d6efd; text-decoration: none;}
     .menu a.active, .menu a:hover { color: #fff; background: #0d6efd; border-radius: 6px; padding: 0.25rem 0.75rem; }
     .product-detail-card { background: #fff; border-radius: 1rem; box-shadow: 0 2px 12px #0002; padding: 2.5rem 2rem 2rem 2rem; }
     .product-title { font-family: 'Playfair Display', serif; font-size: 2.1rem; font-weight: 700; }
@@ -49,162 +55,30 @@ session_start();
 </head>
 <body>
   
-  <div class="container" style="max-width: 980px; margin-top: 42px;">
-    <!-- Navigation menu -->
-    <nav class="menu d-flex align-items-center mb-4">
-      <a href="index.html">Home</a>
-      <a href="products.html" class="active">Products</a>
-      <a href="about.html">About</a>
-      <a href="contact.html">Contact</a>
-    </nav>
+  <div class="container" style="max-width: 980px; margin-top: 100px;">
     <!-- Product detail -->
     <section class="product-detail-card row g-5 mb-5">
+      <?php
+      foreach ($productlist as $item):
+        if($item['masp'] == $masp){
+      ?>
       <div class="col-lg-5 text-center">
         <div class="product-img-sticky">
-          <img src="https://picsum.photos/seed/1/370/270" alt="iPhone 15 Pro" class="product-img mb-3" />
+          <img src="Uploads/<?php echo $item['img']?>" alt="<?php $item['tensp']?>" class="product-img mb-3" />
         </div>
       </div>
       <div class="col-lg-7">
-        <div class="product-title mb-2">iPhone 15 Pro</div>
-        <div class="product-category mb-3">Smartphone</div>
-        <div class="product-desc">
-          Experience the power of the all-new iPhone 15 Pro with A17 Bionic chip, stunning camera, and beautiful design. The perfect blend of performance, style, and innovation.
-        </div>
-        <div class="d-flex align-items-center mb-3">
-          <span class="qty-label">Available:</span> <span class="badge bg-success me-3">12</span>
-          <span id="star-summary" class="align-middle ms-2"></span>
-        </div>
-        <form action="cart.html" method="get" class="row g-2 align-items-center mb-3" style="max-width:300px;">
-          <input type="hidden" name="add" value="1" />
-          <div class="col-auto">
-            <label for="qty" class="form-label qty-label">Qty:</label>
-          </div>
-          <div class="col-auto">
-            <input type="number" min="1" max="12" value="1" name="qty" id="qty" class="form-control" style="width:70px;" />
-          </div>
-          <div class="col-auto">
-            <button type="submit" class="btn btn-warning add-cart-btn">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-cart-plus mb-1 me-1" viewBox="0 0 16 16"><path d="M8 7v3.5a.5.5 0 0 0 1 0V7h1.5a.5.5 0 0 0 0-1H9V4.5a.5.5 0 0 0-1 0V6H6.5a.5.5 0 0 0 0 1H8Zm-4.236 6.496A.5.5 0 0 1 3.5 13h9a.5.5 0 0 1 .491.408l1.5 8A.5.5 0 0 1 14 15.5h-2a.5.5 0 0 1-.491-.408L10.57 13H5.43l-.439 2.092A.5.5 0 0 1 4.5 15.5h-2a.5.5 0 0 1-.491-.408l-1.5-8A.5.5 0 0 1 2 7.5h12a.5.5 0 0 1 .491.408l1.5 8A.5.5 0 0 1 16 15.5h-2a.5.5 0 0 1-.491-.408L13.57 13H2.43l-.439 2.092ZM5 16a1 1 0 1 0 0-2 1 1 0 0 0 0 2Zm6 0a1 1 0 1 0 0-2 1 1 0 0 0 0 2Z"/></svg>
-              Add to Cart
-            </button>
-          </div>
-        </form>
+        <div class="product-title mb-2"><?php echo $item['tensp'] ?></div>
+        <div class="product-category mb-3"><?php echo $item['masp'] ?> </div>
+        <div class="product-category mb-3"><?php echo $item['loaisp'] ?> </div>
+        <div class="product-category mb-3"><?php echo $item['thietbi'] ?> </div>
+        <div class="product-category mb-3"><?php echo $item['gia'] ?> </div>
         <div class="mb-1">
-          <a href="products.html" class="btn btn-outline-secondary btn-sm">&laquo; Back to Products</a>
+          <a href="listproduct.php" class="btn btn-outline-secondary btn-sm">&laquo; Back to list Products</a>
         </div>
       </div>
+      <?php break; } ?>
+      <?php endforeach; ?>
     </section>
-
-    <!-- Reviews -->
-    <section class="review-list mb-5">
-      <h4 class="mb-3">
-        Customer Reviews
-        <span id="review-summary" class="fs-6 fw-normal ms-2 text-muted"></span>
-      </h4>
-      <!-- Each review: Avatar, name, star, date, comment -->
-      <div class="review-item d-flex align-items-start" data-rating="5">
-        <img src="https://randomuser.me/api/portraits/women/65.jpg" class="review-avatar" alt="Alice Nguyen" />
-        <div>
-          <div>
-            <span class="review-user">Alice Nguyen</span>
-            <span class="review-rating" data-stars="5"></span>
-            <span class="review-date">· 2 days ago</span>
-          </div>
-          <div class="review-comment">The iPhone 15 Pro is amazing. Camera quality is top-notch, battery lasts all day!</div>
-        </div>
-      </div>
-      <div class="review-item d-flex align-items-start" data-rating="4">
-        <img src="https://randomuser.me/api/portraits/men/36.jpg" class="review-avatar" alt="Trung Pham" />
-        <div>
-          <div>
-            <span class="review-user">Trung Pham</span>
-            <span class="review-rating" data-stars="4"></span>
-            <span class="review-date">· 1 week ago</span>
-          </div>
-          <div class="review-comment">Fast, beautiful, but price is a bit high. Still love it!</div>
-        </div>
-      </div>
-      <div class="review-item d-flex align-items-start" data-rating="5">
-        <img src="https://randomuser.me/api/portraits/women/8.jpg" class="review-avatar" alt="Jane Doe" />
-        <div>
-          <div>
-            <span class="review-user">Jane Doe</span>
-            <span class="review-rating" data-stars="5"></span>
-            <span class="review-date">· 3 weeks ago</span>
-          </div>
-          <div class="review-comment">Best iPhone I've ever owned. Highly recommend!</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Related products -->
-    <section class="product-relatives mb-4">
-      <h4>Related Products</h4>
-      <div class="row">
-        <div class="col-md-4 mb-3">
-          <div class="card h-100 related-card text-center">
-            <img src="https://picsum.photos/seed/2/180/120" class="card-img-top" alt="MacBook Air M2" />
-            <div class="card-body">
-              <div class="card-title fw-bold">MacBook Air M2</div>
-              <div class="text-muted mb-2">Laptop</div>
-              <a href="product-detail.html?id=2" class="btn btn-outline-primary btn-sm">View Detail</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-3">
-          <div class="card h-100 related-card text-center">
-            <img src="https://picsum.photos/seed/3/180/120" class="card-img-top" alt="Apple Watch Series 9" />
-            <div class="card-body">
-              <div class="card-title fw-bold">Apple Watch Series 9</div>
-              <div class="text-muted mb-2">Wearables</div>
-              <a href="product-detail.html?id=3" class="btn btn-outline-primary btn-sm">View Detail</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4 mb-3">
-          <div class="card h-100 related-card text-center">
-            <img src="https://picsum.photos/seed/4/180/120" class="card-img-top" alt="AirPods Pro" />
-            <div class="card-body">
-              <div class="card-title fw-bold">AirPods Pro</div>
-              <div class="text-muted mb-2">Accessories</div>
-              <a href="product-detail.html?id=4" class="btn btn-outline-primary btn-sm">View Detail</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  </div>
-
-  <!-- Star rendering script -->
-  <script>
-    // Helper to render stars (full, half, empty)
-    function renderStars(rating, max = 5) {
-      let html = '';
-      for (let i = 1; i <= max; i++) {
-        if (rating >= i) html += '<span class="star">&#9733;</span>';
-        else if (rating > i - 1) html += '<span class="star">&#9733;</span>'; // No half for simplicity
-        else html += '<span class="star star-outline">&#9733;</span>';
-      }
-      return html;
-    }
-
-    document.addEventListener("DOMContentLoaded", function() {
-      // Per review
-      document.querySelectorAll('.review-rating[data-stars]').forEach(el => {
-        el.innerHTML = renderStars(parseInt(el.dataset.stars, 10));
-      });
-
-      // Count reviews + avg
-      const reviewItems = document.querySelectorAll('.review-item[data-rating]');
-      let total = reviewItems.length, sum = 0;
-      reviewItems.forEach(item => sum += parseInt(item.dataset.rating, 10));
-      const avg = total ? (sum / total).toFixed(1) : 0;
-      // Render average stars (summary)
-      document.getElementById('star-summary').innerHTML =
-        `<span title="Average Rating">${renderStars(avg)}</span><span class="ms-1 text-warning fw-semibold">${avg}★</span>`;
-      document.getElementById('review-summary').innerHTML =
-        `(${total} reviews, <span class="text-warning">${avg} ★</span>)`;
-    });
-  </script>
 </body>
 </html>
