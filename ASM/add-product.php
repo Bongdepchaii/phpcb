@@ -51,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] ==  'POST') {
 <body>
   <div class="auth-container" style="max-width: 1100px;">
     <h2 style="color: blue;">Add product</h2>
-    <form id="loginForm" action="addproduct.php" method="post" enctype="multipart/form-data">
+    <form id="loginForm" action="add-product.php" method="post" enctype="multipart/form-data">
       <div class="mb-3">
         <input style="margin-bottom: 15px;" type="text" name="masp" class="form-control" placeholder="Ma san pham" />
         <input style="margin-bottom: 15px;" type="text" name="loaisp" class="form-control" placeholder="Loai san pham" />
@@ -68,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] ==  'POST') {
         echo  $message; ?>
       </div>
       <div class="form-text text-center mt-3">
-        <a style="color: blue" href="listproduct.php">Back list product</a> · <a href="#"></a>
+        <a style="color: blue" href="list-product.php">Back list product</a> · <a href="#"></a>
       </div>
     </form>
   </div>

@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_GET['id'])) {
-    echo "Thiếu mã sản phẩm để xoá!";
+    echo "Khong co san pham de xoa!";
     exit;
 }
 
@@ -16,6 +16,5 @@ foreach ($productList as $index => $item) {
         break;
     }
 }
-
-header("Location: listproduct.php");
+header("Location: list-product.php");
 exit;

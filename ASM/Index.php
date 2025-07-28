@@ -8,7 +8,7 @@ $password = 'abc';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST"){
     if($_POST['username'] == $username && $_POST['password'] == $password){
-        header('location: listproduct.php');
+        header('location: list-product.php');
     } else{
 $mesagee = "<br/><div class='alert alert-danger'>Login Failed</div>";
     }

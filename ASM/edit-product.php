@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'gia' => $gia,
                 'img' => $img,
             ];
-            header ('location:listproduct.php');
+            header ('location:list-product.php');
             exit();
         }
     }
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php foreach ($productlist as $item): ?>
             <?php if (isset($item['masp']) && $item['masp'] == $idsp) { ?>
                 <h2 style="color: green;">Edit product</h2>
-                <form id="loginForm" action="editproduct.php?id=<?php echo $item['masp'] ?>" method="post" enctype="multipart/form-data">
+                <form id="loginForm" action="edit-product.php?id=<?php echo $item['masp'] ?>" method="post" enctype="multipart/form-data">
                     <div class="mb-3">
                         <input style="margin-bottom: 15px;" type="text" name="masp" class="form-control" value="<?php echo $item['masp'] ?>" />
                         <input style="margin-bottom: 15px;" type="text" name="loaisp" class="form-control" value="<?php echo $item['loaisp'] ?>" />
@@ -87,7 +87,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                         echo  $message; ?>
                     </div>
                     <div class="form-text text-center mt-3">
-                        <a style="color: blue" href="listproduct.php">Back list product</a> · <a href="#"></a>
+                        <a style="color: blue" href="list-product.php">Back list product</a> · <a href="#"></a>
                     </div>
                 </form>
             <?php break;

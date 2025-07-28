@@ -68,13 +68,13 @@ $productlist = $_SESSION['product'];
         </div>
       </div>
       <div class="col-lg-7">
-        <div class="product-title mb-2"><?php echo $item['tensp'] ?></div>
-        <div class="product-category mb-3"><?php echo $item['masp'] ?> </div>
-        <div class="product-category mb-3"><?php echo $item['loaisp'] ?> </div>
-        <div class="product-category mb-3"><?php echo $item['thietbi'] ?> </div>
-        <div class="product-category mb-3"><?php echo $item['gia'] ?> </div>
+        <div class="product-title mb-2"><strong></strong><?php echo $item['tensp'] ?></div>
+        <div class="product-category mb-3"><strong>Ma san pham: </strong><?php echo $item['masp'] ?> </div>
+        <div class="product-category mb-3"><strong>Loai san pham: </strong><?php echo $item['loaisp'] ?> </div>
+        <div class="product-category mb-3"><strong>Thiet bi: </strong><?php echo $item['thietbi'] ?> </div>
+        <div class="product-category mb-3"><strong>Gia ban: </strong><?php echo $item['gia'] ?> </div>
         <div class="mb-1">
-          <a href="listproduct.php" class="btn btn-outline-secondary btn-sm">&laquo; Back to list Products</a>
+          <a href="list-product.php" class="btn btn-outline-secondary btn-sm">&laquo; Back to list Products</a>
         </div>
       </div>
       <?php break; } ?>
