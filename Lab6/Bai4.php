@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Form POST</h1>
+    <h1>Form check empty Mail</h1>
     <form action="Bai4.php" method="post">
         <label for="name">Name: </label>
         <input style="margin-bottom: 5px;" type="text" name="name"><br>
