@@ -10,8 +10,8 @@
     <form action="Bai4.php" method="post">
         <label for="name">Name: </label>
         <input style="margin-bottom: 5px;" type="text" name="name"><br>
-        <label for="name">Email: </label>
-        <input style="margin-bottom: 5px;" type="email" name="email"><br>
+        <label for="">Email: </label>
+        <input style="margin-bottom: 5px;" type="text" name="email"><br>
         <input style="margin-bottom: 15px;" type="submit" value="submit">
     </form>
 </body>
