@@ -1,7 +1,7 @@
 <?php
 session_start();
 // product
-$product = $_SESSION['product'] ? $_SESSION["product"] : [];
+$product = isset($_SESSION['product']) ? $_SESSION['product'] : [];
 // $product = $_SESSION['product'] = [
 //     [
 //         'masp' => 'SP001',
@@ -36,6 +36,7 @@ $product = $_SESSION['product'] ? $_SESSION["product"] : [];
 //         'img' => '0029155_iphone-16-pro-max-256gb_240.png'
 //     ]
 // ];
+
 //  search
 if(isset($_GET['check']) && isset($_GET['search'])){
 $search = strtolower(trim($_GET['search']));
@@ -63,6 +64,7 @@ $product = $kq;
             <center>
     <div class="container" style="max-width: 1100px; font-size: 0.8rem;">
             <h1 style="margin: 15px 0px; font-size: 2rem;">List product</h1>
+    <a style="margin-bottom: 15px;" class="btn btn-danger" href="index.php">Dang xuat</a>
     <a style="margin-bottom: 15px;" class="btn btn-primary" href="add-product.php">Add san pham</a>
     <!-- <a style="margin-bottom: 15px;" class="btn btn-danger" href="delete.php">Delete all list san pham</a> -->
     <form action="list-product.php" method='get'>
@@ -70,7 +72,7 @@ $product = $kq;
                <form action="" method="get">
                  <input type="text" class="form-control" name="search" placeholder="Search ten san pham"  aria-describedby="button-addon2">
                  <button name="check" class="btn btn-outline-success" type="submit" id="button-addon2">Tim kiem</button>
-               </form>
+               </form>  
 </form>
 </div>
         <table class="table">
